@@ -9,7 +9,7 @@ public class CodegenParameter {
     public Boolean isFormParam, isQueryParam, isPathParam, isHeaderParam,
             isCookieParam, isBodyParam, hasMore, isContainer,
             secondaryParam, isCollectionFormatMulti, isPrimitiveType;
-    public String baseName, paramName, dataType, datatypeWithEnum, collectionFormat, description, unescapedDescription, baseType, defaultValue;
+    public String baseName, paramName, paramTitle, dataType, datatypeWithEnum, collectionFormat, description, unescapedDescription, baseType, defaultValue;
     public String example; // example value (x-example)
     public String jsonSchema;
     public Boolean isString, isInteger, isLong, isFloat, isDouble, isByteArray, isBinary, isBoolean, isDate, isDateTime;
@@ -83,6 +83,7 @@ public class CodegenParameter {
         output.secondaryParam = this.secondaryParam;
         output.baseName = this.baseName;
         output.paramName = this.paramName;
+        output.paramTitle = this.paramTitle;
         output.dataType = this.dataType;
         output.datatypeWithEnum = this.datatypeWithEnum;
         output.collectionFormat = this.collectionFormat;
@@ -176,6 +177,8 @@ public class CodegenParameter {
         if (baseName != null ? !baseName.equals(that.baseName) : that.baseName != null)
             return false;
         if (paramName != null ? !paramName.equals(that.paramName) : that.paramName != null)
+            return false;
+        if (paramTitle != null ? !paramTitle.equals(that.paramTitle) : that.paramTitle != null)
             return false;
         if (dataType != null ? !dataType.equals(that.dataType) : that.dataType != null)
             return false;
@@ -274,6 +277,7 @@ public class CodegenParameter {
         result = 31 * result + (isPrimitiveType != null ? isPrimitiveType.hashCode() : 0);
         result = 31 * result + (baseName != null ? baseName.hashCode() : 0);
         result = 31 * result + (paramName != null ? paramName.hashCode() : 0);
+        result = 31 * result + (paramTitle != null ? paramTitle.hashCode() : 0);
         result = 31 * result + (dataType != null ? dataType.hashCode() : 0);
         result = 31 * result + (datatypeWithEnum != null ? datatypeWithEnum.hashCode() : 0);
         result = 31 * result + (collectionFormat != null ? collectionFormat.hashCode() : 0);

@@ -687,6 +687,24 @@ public class DefaultCodegen {
         return name;
     }
 
+
+    /**
+     * Return the parameter name by removing invalid characters and proper escaping if
+     * it's a reserved word.
+     *
+     * @param name Codegen property object
+     * @return the sanitized parameter name
+     */
+    public String toParamTitle(String name) {
+        name = toParamName(name);
+        StringBuilder builder = new StringBuilder(name);
+        char initial = builder.charAt(0);
+        initial = Character.toUpperCase(initial);
+        builder.setCharAt(0, initial);
+        name = builder.toString();
+        return name;
+    }
+
     /**
      * Return the Enum name (e.g. StatusEnum given 'status')
      *
@@ -2094,6 +2112,7 @@ public class DefaultCodegen {
                 p.isCollectionFormatMulti = true;
             }
             p.paramName = toParamName(qp.getName());
+            p.paramTitle = toParamTitle(qp.getName());
 
             if (model.complexType != null) {
                 imports.add(model.complexType);
@@ -2186,6 +2205,7 @@ public class DefaultCodegen {
                 }
             }
             p.paramName = toParamName(bp.getName());
+            p.paramTitle = toParamTitle(bp.getName());
         }
 
         // set the example value
