@@ -150,6 +150,17 @@ public class DefaultCodegen {
 
     }
 
+    protected void addOption(String key, String description) {
+        addOption(key, description, null);
+    }
+
+    protected void addOption(String key, String description, String defaultValue) {
+        CliOption option = new CliOption(key, description);
+        if (defaultValue != null)
+            option.defaultValue(defaultValue);
+        cliOptions.add(option);
+    }
+
     // override with any special post-processing for all models
     @SuppressWarnings({ "static-method", "unchecked" })
     public Map<String, Object> postProcessAllModels(Map<String, Object> objs) {
@@ -1368,6 +1379,7 @@ public class DefaultCodegen {
 
         property.name = toVarName(name);
         property.baseName = name;
+        property.nameInCamelCase = camelize(property.name, false);
         property.description = escapeText(p.getDescription());
         property.unescapedDescription = p.getDescription();
         property.getter = "get" + getterAndSetterCapitalize(name);

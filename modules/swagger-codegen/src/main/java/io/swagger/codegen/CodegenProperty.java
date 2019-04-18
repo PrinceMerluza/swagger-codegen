@@ -46,6 +46,7 @@ public class CodegenProperty {
     public CodegenProperty items;
     public Map<String, Object> vendorExtensions;
     public Boolean hasValidation; // true if pattern, maximum, etc are set (only used in the mustache template)
+    public boolean isInherited;
     public CodegenModel codegenModel;
     public String enumName;
 
@@ -62,6 +63,8 @@ public class CodegenProperty {
         return PureCloudJavaScriptClientCodegen.getTypeScriptResponseType(datatype);
     }
 
+    public String nameInCamelCase;
+
     @Override
     public String toString() {
         return String.format("%s(%s)", baseName, datatype);
@@ -76,6 +79,7 @@ public class CodegenProperty {
         result = prime * result + ((_enum == null) ? 0 : _enum.hashCode());
         result = prime * result + ((allowableValues == null) ? 0 : allowableValues.hashCode());
         result = prime * result + ((baseName == null) ? 0 : baseName.hashCode());
+        result = prime * result + ((nameInCamelCase == null) ? 0 : nameInCamelCase.hashCode());
         result = prime * result + ((baseType == null) ? 0 : baseType.hashCode());
         result = prime * result + ((complexType == null) ? 0 : complexType.hashCode());
         result = prime * result + ((containerType == null) ? 0 : containerType.hashCode());
@@ -123,6 +127,7 @@ public class CodegenProperty {
         result = prime * result + ((isDateTime == null) ? 0 : isDateTime.hashCode());
         result = prime * result + ((isMapContainer == null) ? 0 : isMapContainer.hashCode());
         result = prime * result + ((isListContainer == null) ? 0 : isListContainer.hashCode());
+        result = prime * result + Objects.hashCode(isInherited);
         result = prime * result + Objects.hashCode(enumName);
         return result;
     }
@@ -137,6 +142,9 @@ public class CodegenProperty {
         }
         final CodegenProperty other = (CodegenProperty) obj;
         if ((this.baseName == null) ? (other.baseName != null) : !this.baseName.equals(other.baseName)) {
+            return false;
+        }
+        if ((this.nameInCamelCase == null) ? (other.nameInCamelCase != null) : !this.nameInCamelCase.equals(other.nameInCamelCase)) {
             return false;
         }
         if ((this.complexType == null) ? (other.complexType != null) : !this.complexType.equals(other.complexType)) {
@@ -273,6 +281,9 @@ public class CodegenProperty {
             return false;
         }
         if (this.isMapContainer != other.isMapContainer && (this.isMapContainer == null || !this.isMapContainer.equals(other.isMapContainer))) {
+            return false;
+        }
+        if (!Objects.equals(this.isInherited, other.isInherited)) {
             return false;
         }
         if (!Objects.equals(this.enumName, other.enumName)) {
