@@ -19,7 +19,6 @@ public class KotlinClientCodegen extends AbstractKotlinCodegen {
     protected String dateLibrary = DateLibrary.JAVA8.value;
 
     protected String invokerPackage = "com.mypurecloud.sdk.v2";
-    protected String projectFolder = "src" + File.separator + "main";
 
     protected Boolean serializableModel = false;
     protected String localVariablePrefix = "";
@@ -195,19 +194,20 @@ public class KotlinClientCodegen extends AbstractKotlinCodegen {
             additionalProperties.put(DateLibrary.JAVA8.value, true);
         }
 
-        final String invokerFolder = (sourceFolder + '/' + invokerPackage).replace(".", "/");
-        writeOptional(outputFolder, new SupportingFile("pom.mustache", "", "pom.xml"));
+        final String invokerFolder = ("core" + File.separator + sourceFolder + File.separator + invokerPackage).replace(".", File.separator);
         writeOptional(outputFolder, new SupportingFile("README.mustache", "", "README.md"));
-        writeOptional(outputFolder, new SupportingFile("build.gradle.mustache", "", "build.gradle"));
-        writeOptional(outputFolder, new SupportingFile("settings.gradle.mustache", "", "settings.gradle"));
+        writeOptional(outputFolder, new SupportingFile("build.gradle.kts.mustache", "", "build.gradle.kts"));
+        writeOptional(outputFolder, new SupportingFile("build.gradle.kts.api.mustache", "", "api/build.gradle.kts"));
+        writeOptional(outputFolder, new SupportingFile("build.gradle.kts.core.mustache", "", "core/build.gradle.kts"));
+        writeOptional(outputFolder, new SupportingFile("build.gradle.kts.model.mustache", "", "model/build.gradle.kts"));
+        writeOptional(outputFolder, new SupportingFile("settings.gradle.kts.mustache", "", "settings.gradle.kts"));
         writeOptional(outputFolder, new SupportingFile("gradle.properties.mustache", "", "gradle.properties"));
-        writeOptional(outputFolder, new SupportingFile("manifest.mustache", projectFolder, "AndroidManifest.xml"));
         writeOptional(outputFolder, new SupportingFile("ApiClient.kt.mustache", invokerFolder, "ApiClient.kt"));
         supportingFiles.add(new SupportingFile("StringUtil.mustache", invokerFolder, "StringUtil.kt"));
         supportingFiles.add(new SupportingFile("apiException.kt.mustache", invokerFolder, "ApiException.kt"));
         supportingFiles.add(new SupportingFile("Configuration.kt.mustache", invokerFolder, "Configuration.kt"));
 
-        final String authFolder = (sourceFolder + '/' + invokerPackage + ".auth").replace(".", "/");
+        final String authFolder = ("core" + File.separator + sourceFolder + File.separator + invokerPackage + ".auth").replace(".", File.separator);
         supportingFiles.add(new SupportingFile("auth/Authentication.mustache", authFolder, "Authentication.kt"));
         supportingFiles.add(new SupportingFile("auth/HttpBasicAuth.mustache", authFolder, "HttpBasicAuth.kt"));
         supportingFiles.add(new SupportingFile("auth/ApiKeyAuth.mustache", authFolder, "ApiKeyAuth.kt"));
