@@ -835,7 +835,9 @@ public class JavaClientCodegen extends DefaultCodegen implements CodegenConfig {
 
     @Override
     protected boolean needToImport(String type) {
-        return super.needToImport(type) && type.indexOf(".") < 0;
+        boolean val = super.needToImport(type) && type.indexOf(".") < 0;
+//        System.out.println("RONAN needToImport " + type + " " + val);
+        return val;
     }
 /*
     @Override

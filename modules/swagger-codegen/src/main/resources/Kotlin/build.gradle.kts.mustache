@@ -1,5 +1,11 @@
-group = "{{groupId}}"
-version = "{{artifactVersion}}"
+
+import org.gradle.api.publish.maven.*
+
+import org.jfrog.gradle.plugin.artifactory.dsl.PublisherConfig
+import org.jfrog.gradle.plugin.artifactory.dsl.ResolverConfig
+
+import groovy.lang.GroovyObject
+
 description = "A Kotlin package to interface with the PureCloud Platform API"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
@@ -9,6 +15,8 @@ plugins {
     java
     `maven-publish`
     `java-library`
+    signing
+    id("com.jfrog.artifactory") version "4.18.0"
 }
 
 repositories {
@@ -19,17 +27,20 @@ repositories {
 }
 
 allprojects {
-    group = "org.gradle.kotlin.dsl.samples.multiproject"
-    version = "1.0"
+    // from swagger
+//    group = "{{groupId}}"
+   // version = "{{artifactVersion}}"
+    version = "2.0.0"
     repositories {
         jcenter()
     }
 }
 
 dependencies {
-    compile(project(":api"))
-    compile(project(":core"))
-    compile(project(":model"))
+    implementation(project(":api"))
+    implementation(project(":core"))
+    implementation(project(":model"))
+
     // Make the root project archives configuration depend on every subproject
     subprojects.forEach {
         archives(it)
@@ -45,22 +56,18 @@ java {
     withSourcesJar()
 }
 
-//publishing {
-//    publications.create<MavenPublication>("maven") {
-//        from(components["java"])
-//        artifact(testsJar)
-//    }
-//}
+publishing {
+    publications.create<MavenPublication>("maven") {
+        artifact(file("$rootDir/build/distributions/${rootProject.name}-$version.jar"))
+    }
+}
 
 tasks.withType<JavaCompile>() {
     options.encoding = "UTF-8"
 }
 
-tasks.test {
-    useTestNG()
-}
 
-tasks.create<Zip>("zip") {
+tasks.create<Zip>("generateJar") {
     description = "Archives the resource pack output"
     group = "Archive"
     archiveExtension.set("jar")
@@ -69,4 +76,26 @@ tasks.create<Zip>("zip") {
     from("core/build/classes/kotlin/main")
     from("extensions/build/classes/kotlin/main")
     from("model/build/classes/kotlin/main")
+}
+
+signing {
+    sign(tasks["generateJar"])
+}
+
+artifactory {
+    setContextUrl("https://purecloud.jfrog.io/purecloud/inin-release")
+    publish(delegateClosureOf<PublisherConfig> {
+        repository(delegateClosureOf<GroovyObject> {
+            setProperty("repoKey", "/com/mypurecloud/")
+//            setProperty("username", project.findProperty("artifactory_user") ?: "nouser")
+//            setProperty("password", project.findProperty("artifactory_password") ?: "nopass")
+            setProperty("maven", true)
+        })
+        defaults(delegateClosureOf<GroovyObject> {
+            invokeMethod("publications", "maven")
+        })
+    })
+//    resolve(delegateClosureOf<ResolverConfig> {
+//        setProperty("repoKey", "repo")
+//    })
 }

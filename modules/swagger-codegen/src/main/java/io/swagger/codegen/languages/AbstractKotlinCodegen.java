@@ -531,8 +531,13 @@ public abstract class AbstractKotlinCodegen extends DefaultCodegen implements Co
 
     @Override
     protected boolean isReservedWord(String word) {
+//        System.out.println("RONAN isReservedWord " + reservedWords);
         // We want case-sensitive escaping, to avoid unnecessary backtick-escaping.
-        return reservedWords.contains(word);
+//        return word != null && (reservedWords.contains(word) || reservedWords.contains(word.toLowerCase()));
+//        return word != null && reservedWords.contains(word.toLowerCase());
+//        return reservedWords.contains(word);
+
+        return word != null && reservedWords.contains(word.toLowerCase());
     }
 
     /**
@@ -541,9 +546,11 @@ public abstract class AbstractKotlinCodegen extends DefaultCodegen implements Co
      * @param type name of the type
      * @return true if the library/module/package of the corresponding type needs to be imported
      */
-    @Override
+//    @Override
     protected boolean needToImport(String type) {
-        // provides extra protection against improperly trying to import language primitives and java types
+//        boolean val = super.needToImport(type) && type.indexOf(".") < 0;
+//        System.out.println("RONAN needToImport " + type + " " + val);
+//        return val;
         boolean imports = !type.startsWith("kotlin.") && !type.startsWith("java.") && !defaultIncludes.contains(type) && !languageSpecificPrimitives.contains(type);
         return imports;
     }
