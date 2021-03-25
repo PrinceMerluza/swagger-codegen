@@ -285,6 +285,8 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
                 clientPackageDir, "IApiAccessor.cs"));
         supportingFiles.add(new SupportingFile("Configuration.mustache",
                 clientPackageDir, "Configuration.cs"));
+        supportingFiles.add(new SupportingFile("Logger.mustache",
+                clientPackageDir, "Logger.cs"));
         supportingFiles.add(new SupportingFile("ApiClient.mustache",
                 clientPackageDir, "ApiClient.cs"));
         supportingFiles.add(new SupportingFile("ApiException.mustache",
