@@ -279,7 +279,6 @@ public class JavaClientCodegen extends DefaultCodegen implements CodegenConfig {
         if (!("feign".equals(getLibrary()) || usesAnyRetrofitLibrary())) {
             supportingFiles.add(new SupportingFile("apiException.mustache", invokerFolder, "ApiException.java"));
             supportingFiles.add(new SupportingFile("Configuration.mustache", invokerFolder, "Configuration.java"));
-            // supportingFiles.add(new SupportingFile("Logger.mustache", invokerFolder, "Logger.java"));
             supportingFiles.add(new SupportingFile("Pair.mustache", invokerFolder, "Pair.java"));
             supportingFiles.add(new SupportingFile("auth/Authentication.mustache", authFolder, "Authentication.java"));
         }
