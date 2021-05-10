@@ -146,6 +146,7 @@ public class GoClientCodegen extends DefaultCodegen implements CodegenConfig {
         supportingFiles.add(new SupportingFile("apiresponse.mustache", "/platformclientv2", "apiresponse.go"));
         supportingFiles.add(new SupportingFile("go.sum.mustache", "", "go.sum"));
         supportingFiles.add(new SupportingFile("go.mod.mustache", "", "go.mod"));
+        supportingFiles.add(new SupportingFile("logger.mustache", "/platformclientv2", "logger.go"));
     }
 
     @Override
