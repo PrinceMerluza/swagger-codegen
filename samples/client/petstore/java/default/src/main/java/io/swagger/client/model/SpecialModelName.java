@@ -32,7 +32,6 @@ public class SpecialModelName   {
     this.specialPropertyName = specialPropertyName;
   }
 
-  
 
   @Override
   public boolean equals(java.lang.Object o) {

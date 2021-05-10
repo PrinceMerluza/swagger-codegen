@@ -33,7 +33,7 @@ public class Tag   {
     this.id = id;
   }
 
-  
+
   /**
    **/
   public Tag name(String name) {
@@ -50,7 +50,6 @@ public class Tag   {
     this.name = name;
   }
 
-  
 
   @Override
   public boolean equals(java.lang.Object o) {

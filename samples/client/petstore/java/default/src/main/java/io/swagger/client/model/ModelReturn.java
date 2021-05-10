@@ -33,7 +33,6 @@ public class ModelReturn   {
     this._return = _return;
   }
 
-  
 
   @Override
   public boolean equals(java.lang.Object o) {

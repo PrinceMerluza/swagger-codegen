@@ -8,8 +8,8 @@ import io.swagger.client.Configuration;
 import io.swagger.client.model.*;
 import io.swagger.client.Pair;
 
-import java.math.BigDecimal;
 import java.util.Date;
+import java.math.BigDecimal;
 
 
 import java.util.ArrayList;
@@ -37,7 +37,6 @@ public class FakeApi {
     this.apiClient = apiClient;
   }
 
-  
   /**
    * Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트 
    * Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트 
@@ -86,35 +85,32 @@ public class FakeApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
 
     
-
     if (integer != null)
       localVarFormParams.put("integer", integer);
-    if (int32 != null)
+if (int32 != null)
       localVarFormParams.put("int32", int32);
-    if (int64 != null)
+if (int64 != null)
       localVarFormParams.put("int64", int64);
-    if (number != null)
+if (number != null)
       localVarFormParams.put("number", number);
-    if (_float != null)
+if (_float != null)
       localVarFormParams.put("float", _float);
-    if (_double != null)
+if (_double != null)
       localVarFormParams.put("double", _double);
-    if (string != null)
+if (string != null)
       localVarFormParams.put("string", string);
-    if (_byte != null)
+if (_byte != null)
       localVarFormParams.put("byte", _byte);
-    if (binary != null)
+if (binary != null)
       localVarFormParams.put("binary", binary);
-    if (date != null)
+if (date != null)
       localVarFormParams.put("date", date);
-    if (dateTime != null)
+if (dateTime != null)
       localVarFormParams.put("dateTime", dateTime);
-    if (password != null)
+if (password != null)
       localVarFormParams.put("password", password);
-    
 
     final String[] localVarAccepts = {
       "application/xml", "application/json"
@@ -128,9 +124,7 @@ public class FakeApi {
 
     String[] localVarAuthNames = new String[] {  };
 
-    
+
     apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
-    
   }
-  
 }

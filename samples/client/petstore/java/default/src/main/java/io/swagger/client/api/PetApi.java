@@ -9,8 +9,8 @@ import io.swagger.client.model.*;
 import io.swagger.client.Pair;
 
 import io.swagger.client.model.Pet;
-import io.swagger.client.model.ModelApiResponse;
 import java.io.File;
+import io.swagger.client.model.ModelApiResponse;
 
 
 import java.util.ArrayList;
@@ -38,7 +38,6 @@ public class PetApi {
     this.apiClient = apiClient;
   }
 
-  
   /**
    * Add a new pet to the store
    * 
@@ -61,12 +60,9 @@ public class PetApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
 
     
-
     
-
     final String[] localVarAccepts = {
       "application/xml", "application/json"
     };
@@ -79,11 +75,9 @@ public class PetApi {
 
     String[] localVarAuthNames = new String[] { "petstore_auth" };
 
-    
+
     apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
-    
   }
-  
   /**
    * Deletes a pet
    * 
@@ -108,14 +102,11 @@ public class PetApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
 
     if (apiKey != null)
       localVarHeaderParams.put("api_key", apiClient.parameterToString(apiKey));
-    
 
     
-
     final String[] localVarAccepts = {
       "application/xml", "application/json"
     };
@@ -128,11 +119,9 @@ public class PetApi {
 
     String[] localVarAuthNames = new String[] { "petstore_auth" };
 
-    
+
     apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
-    
   }
-  
   /**
    * Finds Pets by status
    * Multiple status values can be provided with comma separated strings
@@ -156,14 +145,10 @@ public class PetApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
     localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "status", status));
-    
 
     
-
     
-
     final String[] localVarAccepts = {
       "application/xml", "application/json"
     };
@@ -176,12 +161,9 @@ public class PetApi {
 
     String[] localVarAuthNames = new String[] { "petstore_auth" };
 
-    
     GenericType<List<Pet>> localVarReturnType = new GenericType<List<Pet>>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-    
-  }
-  
+      }
   /**
    * Finds Pets by tags
    * Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
@@ -205,14 +187,10 @@ public class PetApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
     localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "tags", tags));
-    
 
     
-
     
-
     final String[] localVarAccepts = {
       "application/xml", "application/json"
     };
@@ -225,12 +203,9 @@ public class PetApi {
 
     String[] localVarAuthNames = new String[] { "petstore_auth" };
 
-    
     GenericType<List<Pet>> localVarReturnType = new GenericType<List<Pet>>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-    
-  }
-  
+      }
   /**
    * Find pet by ID
    * Returns a single pet
@@ -255,12 +230,9 @@ public class PetApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
 
     
-
     
-
     final String[] localVarAccepts = {
       "application/xml", "application/json"
     };
@@ -273,12 +245,9 @@ public class PetApi {
 
     String[] localVarAuthNames = new String[] { "api_key" };
 
-    
     GenericType<Pet> localVarReturnType = new GenericType<Pet>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-    
-  }
-  
+      }
   /**
    * Update an existing pet
    * 
@@ -301,12 +270,9 @@ public class PetApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
 
     
-
     
-
     final String[] localVarAccepts = {
       "application/xml", "application/json"
     };
@@ -319,11 +285,9 @@ public class PetApi {
 
     String[] localVarAuthNames = new String[] { "petstore_auth" };
 
-    
+
     apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
-    
   }
-  
   /**
    * Updates a pet in the store with form data
    * 
@@ -349,15 +313,12 @@ public class PetApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
 
     
-
     if (name != null)
       localVarFormParams.put("name", name);
-    if (status != null)
+if (status != null)
       localVarFormParams.put("status", status);
-    
 
     final String[] localVarAccepts = {
       "application/xml", "application/json"
@@ -371,11 +332,9 @@ public class PetApi {
 
     String[] localVarAuthNames = new String[] { "petstore_auth" };
 
-    
+
     apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
-    
   }
-  
   /**
    * uploads an image
    * 
@@ -402,15 +361,12 @@ public class PetApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
 
     
-
     if (additionalMetadata != null)
       localVarFormParams.put("additionalMetadata", additionalMetadata);
-    if (file != null)
+if (file != null)
       localVarFormParams.put("file", file);
-    
 
     final String[] localVarAccepts = {
       "application/json"
@@ -424,10 +380,7 @@ public class PetApi {
 
     String[] localVarAuthNames = new String[] { "petstore_auth" };
 
-    
     GenericType<ModelApiResponse> localVarReturnType = new GenericType<ModelApiResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-    
-  }
-  
+      }
 }
