@@ -66,7 +66,8 @@ public class JavaClientCodegen extends DefaultCodegen implements CodegenConfig {
                 "localVarPath", "localVarQueryParams", "localVarHeaderParams", "localVarFormParams",
                 "localVarPostBody", "localVarAccepts", "localVarAccept", "localVarContentTypes",
                 "localVarContentType", "localVarAuthNames", "localReturnType",
-                "ApiClient", "ApiException", "ApiResponse", "Configuration", "StringUtil",
+                "ApiClient", "ApiException", "ApiResponse", "Configuration", "StringUtil", "Logger",
+                "FileWatcher",
 
                 // language reserved words
                 "abstract", "continue", "for", "new", "switch", "assert",
@@ -264,8 +265,11 @@ public class JavaClientCodegen extends DefaultCodegen implements CodegenConfig {
         writeOptional(outputFolder, new SupportingFile("gradle.properties.mustache", "", "gradle.properties"));
         writeOptional(outputFolder, new SupportingFile("manifest.mustache", projectFolder, "AndroidManifest.xml"));
         writeOptional(outputFolder, new SupportingFile("ApiClient.mustache", invokerFolder, "ApiClient.java"));
+        writeOptional(outputFolder, new SupportingFile("Logger.mustache", invokerFolder, "Logger.java"));
+        writeOptional(outputFolder, new SupportingFile("FileWatcher.mustache", invokerFolder, "FileWatcher.java"));
         supportingFiles.add(new SupportingFile("StringUtil.mustache", invokerFolder, "StringUtil.java"));
-
+        supportingFiles.add(new SupportingFile("Logger.mustache", invokerFolder, "Logger.java"));
+        
         final String authFolder = (sourceFolder + '/' + invokerPackage + ".auth").replace(".", "/");
         if ("feign".equals(getLibrary())) {
             supportingFiles.add(new SupportingFile("FormAwareEncoder.mustache", invokerFolder, "FormAwareEncoder.java"));
