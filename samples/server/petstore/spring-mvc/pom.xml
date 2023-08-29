@@ -125,6 +125,6 @@
     <junit-version>4.12</junit-version>
     <servlet-api-version>2.5</servlet-api-version>
     <springfox-version>2.4.0</springfox-version>
-    <spring-version>4.2.5.RELEASE</spring-version>
+    <spring-version>6.0.0</spring-version>
   </properties>
 </project>
